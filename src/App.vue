@@ -9,7 +9,11 @@ export default {
 </script>
 
 <style>
+html{
+  height: 100%;
+}
 body{
-  background-color: rgb(77, 84, 136);
+  
+  background-image: linear-gradient(rgb(53, 58, 94), rgb(114, 123, 196),rgb(119, 130, 212));
 }
 </style>
