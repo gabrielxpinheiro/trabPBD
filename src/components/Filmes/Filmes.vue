@@ -7,9 +7,13 @@
           <img class="card-img-top" v-bind:src="filme.imagem" alt="Imagem de capa do card" />
           <div class="card-body">
             <h5 class="card-title">{{filme.nome}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ filme.duracao }}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">{{ filme.genero }}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">Nota: {{ filme.avaliacao }}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">{{ filme.classificacao | cassificacao}}</h6>
             <p class="card-text">{{ filme.descricao }}</p>
             <div class="row align-items-end">
-              <div class="col-md-12 mb-2">
+              <div class="col-md-12 mb-2 ">
                 <a href="#" class="btn btn-warning">watchIt</a>
               </div>
               <p class="escolhaPlayList">Adicione em uma playlist</p>
@@ -70,14 +74,20 @@ export default {
       alert(res.mensagem);
 
     }
-  }
+  },
+
+  filters: {
+    cassificacao: function(value) {
+      return value == 0 ? 'Livre' : `+ ${value}`;
+    }
+  },
 };
 </script>
 
 <style scoped>
 .cartao-filmes {
   max-width: 200px;
-  max-height: 350px;
+  max-height: 340px;
 }
 
 .card-text {

@@ -23,7 +23,13 @@
                 <router-link to="/Documentarios" active-class="active" class="nav-link">Documentarios</router-link>
               </li>
               <li class="nav-item ml-5">
-                <router-link to="/Playlist" active-class="active" class="nav-link">PlayList</router-link>
+                <router-link to="/Playlist" active-class="active" class="nav-link">Minhas Playlists</router-link>
+              </li>
+              <li class="nav-item ml-5">
+                <router-link to="/UsuariosPlaylists" active-class="active" class="nav-link">Playlists</router-link>
+              </li>
+              <li class="nav-item divUsuario">
+                <h3 class="nomeUsuario text-warning">{{ nome_usuario }}</h3>
               </li>
             </ul>
           </div>
@@ -34,7 +40,13 @@
 </template>
 
 <script>
-export default {};
+import { mapState } from "vuex";
+export default {
+
+  computed: {
+    ...mapState(["nome_usuario"])
+  },
+};
 </script>
 
 <style >
@@ -53,5 +65,10 @@ export default {};
 .menu {
   padding-bottom: 130px;
 }
+
+.divUsuario{
+  padding-left: 600px;
+}
+
 
 </style>

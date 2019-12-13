@@ -8,12 +8,16 @@
           <img class="card-img-top" v-bind:src="serie.imagem" alt="Imagem de capa do card" />
           <div class="card-body">
             <h5 class="card-title">{{serie.nome}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ serie.duracao }}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">{{ serie.genero }}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">Nota: {{ serie.avaliacao }}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">{{ serie.classificacao | cassificacao}}</h6>
             <p
               class="card-text"
             >{{ serie.descricao }}</p>
             <div class="row align-items-end">
               <div class="col-md-12 mb-2">
-                <a href="#" class="btn btn-warning">watchIt</a>
+                <button class="btn btn-warning mt-2" @click="guardarIdSerie(serie.id)">Watchit</button>
               </div>
               <p class="escolhaPlayList">Adicione em uma playlist</p>
               <select class="custom-select mr-2 botao-horario" v-model="idPlaylist">
@@ -72,8 +76,18 @@ export default {
       .then(res => res.json())
       alert(res.mensagem);
 
+    },
+
+    guardarIdSerie(id_serie){
+      this.$store.commit("CHANGE_ID_SERIE", id_serie)
+      this.$router.push("/Temporadas");
     }
-  }
+  },
+  filters: {
+    cassificacao: function(value) {
+      return value == 0 ? 'Livre' : `+ ${value}`;
+    }
+  },
 };
 </script>
 
