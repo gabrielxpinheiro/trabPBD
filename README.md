@@ -1,5 +1,7 @@
 # trabalhopbd
 
+Front-end feito para disciplina de banco de dados.
+
 > A Vue.js project
 
 ## Build Setup
